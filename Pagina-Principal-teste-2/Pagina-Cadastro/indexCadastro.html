@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/formulario.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>Sketch</title>
+
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <i class="fa-solid fa-cat" id="nav_logo">Sketch</i>
+
+            <!-- Coloquei essa div para separar os botões -->
+            <div class="div-botao-assinar">
+            <button class="btn-login"> Entrar <i class="fa-solid fa-cat" id="nav_logo"> </i> </button>
+
+            </div>
+        </nav>
+
+            
+        </div>
+    </header>
+
+<main class="container-cadastro">
+        <form id="formCadastro">
+            
+            <section id="etapa-dados">
+                <h2>Crie sua conta</h2>
+                <p>Falta pouco para começar sua maratona!</p>
+
+                <div class="campo">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome" required>
+                </div>
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Crie uma senha" required>
+                </div>
+
+                <div class="campo">
+                    <label for="confirma-senha">Confirmar Senha</label>
+                    <input type="password" id="confirma-senha" placeholder="Repita a senha" required>
+                </div>
+
+                <button type="button" class="btn-proximo">Próximo: Escolher Plano</button>
+            </section>
+
+            <section id="etapa-planos">
+                <h2>Escolha seu plano</h2>
+                
+                <div class="cards-container">
+                    <div class="card-plano" id="plano-free">
+                        <h3>Free</h3>
+                        <ul>
+                            <li>Qualidade 480p</li>
+                            <li>Com anúncios</li>
+                            <li>Acesso limitado</li>
+                        </ul>
+                        <span class="preco">Grátis</span>
+                        <input type="radio" name="plano" value="free" id="radio-free" hidden>
+                    </div>
+
+                    <div class="card-plano" id="plano-pro">
+                        <h3>Pro</h3>
+                        <ul>
+                            <li>Qualidade Full HD</li>
+                            <li>Sem anúncios</li>
+                            <li>Acesso total</li>
+                        </ul>
+                        <span class="preco">R$ 9,90/mês</span>
+                        <input type="radio" name="plano" value="pro" id="radio-pro" hidden>
+                    </div>
+                </div>
+
+                <div class="botoes-final">
+                    <button type="button" class="btn-voltar">Voltar</button>
+                    <button type="submit" class="btn-finalizar">Finalizar Cadastro</button>
+                </div>
+            </section>
+
+        </form>
+    </main>
+    <script src="../Pagina-Cadastro/Javascript/script.js"></script>
+    <script src="/Script/script.js"></script>
+</body>
+</html>
