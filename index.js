@@ -168,7 +168,28 @@ app.post('/excluir-conta', (req, res) => {
     });
 });
 
+app.post('/atualizar-perfil', (req, res) => {
+    const { campo, valor, numero_cartao, cpf } = req.body;
+    const usuarioId = req.session.usuarioId;
 
+    if (!usuarioId) return res.status(401).send("Sessão expirada");
+
+    // Se for alteração de plano para PRO, atualizamos também cartão e CPF
+    if (campo === 'plano' && valor === 'pro') {
+        const sql = "UPDATE usuarios SET plano = ?, numero_cartao = ?, cpf = ? WHERE id = ?";
+        db.query(sql, [valor, numero_cartao, cpf, usuarioId], (err, result) => {
+            if (err) return res.status(500).send("Erro ao processar upgrade");
+            res.send("Upgrade realizado!");
+        });
+    } else {
+        // Fluxo normal para Nome ou Email
+        const sql = `UPDATE usuarios SET ${campo} = ? WHERE id = ?`;
+        db.query(sql, [valor, usuarioId], (err, result) => {
+            if (err) return res.status(500).send("Erro ao atualizar");
+            res.send(`${campo} atualizado com sucesso!`);
+        });
+    }
+});
 
 
 // 4. Iniciar Servidor (Sempre por último)
