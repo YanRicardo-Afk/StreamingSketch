@@ -54,9 +54,7 @@ db.connect((err) => {
 
 // 3. Rotas da API
 
-app.get('/', (req, res) => {
-    res.send('Servidor rodando com sucesso!');
-});
+
 
 app.post('/cadastrar', (req, res) => {
     const { nome, email, senha, plano, cpf, numero_cartao, senha_cartao } = req.body;
