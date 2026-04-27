@@ -1,0 +1,18 @@
+.container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px); /* Desconta a altura aproximada do seu header */
+    padding: 20px;
+}
+
+/* Estilo do formulário com efeito de profundidade */
+#formLogin{
+    background-color: #1e1e1e;
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px; /* Largura máxima para não ficar muito esticado */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    color: white;
+}
