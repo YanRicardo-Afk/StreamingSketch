@@ -78,3 +78,22 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(err => console.error("Erro ao salvar:", err));
     });
 });
+
+// --- LOGOUT ---
+document.getElementById('btn-logout').addEventListener('click', () => {
+    window.location.href = '/logout';
+});
+
+// --- EXCLUIR CONTA ---
+document.getElementById('btn-excluir').addEventListener('click', () => {
+    const certeza = confirm("TEM CERTEZA? Isso apagará todos os seus dados e não pode ser desfeito.");
+    
+    if (certeza) {
+        fetch('/excluir-conta', { method: 'POST' })
+            .then(res => res.text())
+            .then(msg => {
+                alert(msg);
+                window.location.href = '/'; // Volta para a home inicial
+            });
+    }
+});

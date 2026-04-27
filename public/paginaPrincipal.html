@@ -1,52 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sketch Assistir</title>
-    <link rel="stylesheet" href="paginas/Pagina-Principal/style.css">
+    <title>Sketch - Streaming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <link rel="stylesheet" href="paginas/Pagina-Principal/style.css">
 </head>
 <body>
-<div id="perfil-container">
-    <h1>Configurações da Conta</h1>
+    <nav id="sidebar">
+        <a href="#" class="nav-link"><i class="fa-solid fa-house"></i> <span class="nav-text">Início</span></a>
+        <a href="#" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i> <span class="nav-text">Buscar</span></a>
+        <a href="perfil.html" class="nav-link"><i class="fa-solid fa-user"></i> <span class="nav-text">Perfil</span></a>
+    </nav>
 
-    <div class="config-item">
-        <label>Nome:</label>
-        <span id="display-nome">...</span>
-        <button id="btn-edit-nome">Alterar</button>
-    </div>
-
-    <div class="config-item">
-        <label>E-mail:</label>
-        <span id="display-email">...</span>
-        <button id="btn-edit-email">Alterar</button>
-    </div>
-
-    <div class="config-item">
-        <label>Plano:</label>
-        <span id="display-plano">...</span>
-        <button id="btn-edit-plano">Mudar Plano</button>
-    </div>
-</div>
-
-<div id="modal-editar" class="modal">
-    <div class="modal-conteudo">
-        <h3 id="modal-titulo">Editar</h3>
-        
-        <input type="text" id="input-geral" style="display: none;">
-
-        <select id="select-plano" style="display: none;">
-            <option value="free">Free</option>
-            <option value="pro">Pro</option>
-        </select>
-
-        <div class="modal-botoes">
-            <button id="btn-cancelar">Cancelar</button>
-            <button id="btn-salvar" class="btn-confirmar">Salvar</button>
-        </div>
-    </div>
-</div>
-
-    <script src="paginas/Pagina-Principal/paginaPrincipal.js"></script>
+    <main id="content">
+        <h1>Bem-vindo ao Sketch</h1>
+        <p>Seu catálogo de animações aparecerá aqui.</p>
+    </main>
 </body>
 </html>

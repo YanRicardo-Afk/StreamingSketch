@@ -147,7 +147,26 @@ app.post('/alterar-senha', (req, res) => {
     });
 });
 
+// ROTA PARA DESLOGAR (LOGOUT)
+app.get('/logout', (req, res) => {
+    req.session.destroy(); // Apaga o "crachá" da sessão
+    res.redirect('/'); // Volta para a home do site
+});
 
+// ROTA PARA EXCLUIR CONTA
+app.post('/excluir-conta', (req, res) => {
+    const usuarioId = req.session.usuarioId;
+
+    if (!usuarioId) return res.status(401).send("Não autorizado");
+
+    const sql = "DELETE FROM usuarios WHERE id = ?";
+    db.query(sql, [usuarioId], (err, result) => {
+        if (err) return res.status(500).send("Erro ao excluir conta");
+        
+        req.session.destroy(); // Limpa a sessão após deletar
+        res.send("Conta excluída com sucesso.");
+    });
+});
 
 
 
