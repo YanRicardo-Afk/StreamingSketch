@@ -79,7 +79,7 @@ app.post('/login', (req, res) => {
         if (results.length > 0) {
             req.session.usuarioId = results[0].id;
             req.session.usuarioNome = results[0].nome;
-            res.redirect('/perfil.html');
+            res.redirect('/paginaPrincipal.html');
         } else {
             res.send("E-mail ou senha incorretos.");
         }

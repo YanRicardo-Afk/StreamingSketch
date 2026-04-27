@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch Assistir</title>
+</head>
+<body>
+    <h1>Área do Usuário</h1>
+    <p>Bem Vindo, <span id="nome-usuario">Carregando...</span>!</p>
+
+    <form action="http://localhost:3000/alterar-nome" method="POST">
+        <input type="text" name="novoNome" placeholder="Novo Nome" required>
+        <button type="submit">Atualizar Nome</button>
+    </form>
+
+
+
+    <br>
+    <a href="index.html">Sair</a>
+
+    <script src="paginas/Pagina-Principal/paginaPrincipal.js"></script>
+</body>
+</html>
