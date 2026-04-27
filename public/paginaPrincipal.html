@@ -6,18 +6,33 @@
     <title>Sketch Assistir</title>
 </head>
 <body>
-    <h1>Área do Usuário</h1>
-    <p>Bem Vindo, <span id="nome-usuario">Carregando...</span>!</p>
+ <div id="perfil-container">
+    <h1>Configurações da Conta</h1>
 
-    <form action="http://localhost:3000/alterar-nome" method="POST">
-        <input type="text" name="novoNome" placeholder="Novo Nome" required>
-        <button type="submit">Atualizar Nome</button>
-    </form>
+    <div class="config-item">
+        <label>Nome:</label>
+        <span id="display-nome">Carregando...</span>
+        <button onclick="editar('nome')">Alterar</button>
+    </div>
 
+    <div class="config-item">
+        <label>E-mail:</label>
+        <span id="display-email">Carregando...</span>
+        <button onclick="editar('email')">Alterar</button>
+    </div>
 
+    <div class="config-item">
+        <label>Plano Atual:</label>
+        <span id="display-plano">Carregando...</span>
+        <button onclick="editar('plano')">Mudar Plano</button>
+    </div>
 
-    <br>
-    <a href="index.html">Sair</a>
+    <div class="config-item">
+        <label>Segurança:</label>
+        <span>********</span>
+        <button onclick="editar('senha')">Alterar Senha</button>
+    </div>
+</div>
 
     <script src="paginas/Pagina-Principal/paginaPrincipal.js"></script>
 </body>

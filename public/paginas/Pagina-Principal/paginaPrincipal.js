@@ -1,29 +1,35 @@
-// script-perfil.js
+// Busca dados ao carregar
+fetch('/usuario-atual')
+    .then(res => res.json())
+    .then(user => {
+        document.getElementById('display-nome').innerText = user.nome;
+        document.getElementById('display-email').innerText = user.email;
+        document.getElementById('display-plano').innerText = user.plano.toUpperCase();
+    });
 
-// 1. Função que roda assim que a página carrega
-document.addEventListener('DOMContentLoaded', () => {
+function editar(campo) {
+    let novoValor;
     
-    // Fazemos o pedido para a rota que criamos no Back-end
-    // Note que agora usamos apenas '/usuario-atual' (caminho relativo)
-    fetch('/usuario-atual')
-        .then(response => {
-            if (!response.ok) {
-                // Se o servidor responder 401 ou outro erro, jogamos para o catch
-                throw new Error('Não autorizado');
-            }
-            return response.json();
-        })
-        .then(dados => {
-            // 2. Se deu tudo certo, procuramos o <span> no HTML e trocamos o texto
-            const spanNome = document.getElementById('nome-usuario');
-            if (spanNome && dados.nome) {
-                spanNome.innerText = dados.nome;
-            }
-        })
-        .catch(erro => {
-            console.error('Erro ao buscar dados:', erro);
-            // 3. Caso dê erro (usuário não logado), podemos redirecionar para o login
-            alert("Você precisa estar logado!");
-            window.location.href = '/login.html';
-        });
-});
+    if (campo === 'senha') {
+        novoValor = prompt("Digite sua nova senha:");
+        if (!novoValor) return;
+        enviarAlteracao('/alterar-senha', { senhaNova: novoValor });
+    } else {
+        novoValor = prompt(`Digite o novo ${campo}:`);
+        if (!novoValor) return;
+        enviarAlteracao('/atualizar-perfil', { campo: campo, valor: novoValor });
+    }
+}
+
+function enviarAlteracao(rota, dados) {
+    fetch(rota, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+    })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        window.location.reload(); // Recarrega para mostrar o dado novo
+    });
+}

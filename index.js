@@ -100,15 +100,61 @@ app.post('/alterar-nome', (req, res) => {
     });
 });
 
+
+// parte para pegar os dados e depois dar para alterar
+
+
+// Rota para pegar todos os dados do usuário logado
 app.get('/usuario-atual', (req, res) => {
-    if (req.session.usuarioNome) {
-        res.json({ nome: req.session.usuarioNome });
-    } else {
-        res.status(401).json({ erro: "Não logado" });
-    }
+    if (!req.session.usuarioId) return res.status(401).json({ erro: "Não logado" });
+
+    const sql = "SELECT nome, email, plano FROM usuarios WHERE id = ?";
+    db.query(sql, [req.session.usuarioId], (err, results) => {
+        if (err) return res.status(500).json({ erro: "Erro no banco" });
+        res.json(results[0]);
+    });
 });
+
+// Rota genérica para atualizar dados (Nome, Email ou Plano)
+app.post('/atualizar-perfil', (req, res) => {
+    const { campo, valor } = req.body; // 'campo' seria 'nome', 'email' ou 'plano'
+    const usuarioId = req.session.usuarioId;
+
+    if (!usuarioId) return res.status(401).send("Sessão expirada");
+
+    // Por segurança, validamos quais campos podem ser alterados
+    const camposPermitidos = ['nome', 'email', 'plano'];
+    if (!camposPermitidos.includes(campo)) return res.status(400).send("Campo inválido");
+
+    const sql = `UPDATE usuarios SET ${campo} = ? WHERE id = ?`;
+    db.query(sql, [valor, usuarioId], (err, result) => {
+        if (err) return res.status(500).send("Erro ao atualizar");
+        
+        // Se mudou o nome, atualiza a sessão também
+        if (campo === 'nome') req.session.usuarioNome = valor;
+        
+        res.send(`${campo} atualizado com sucesso!`);
+    });
+});
+
+// Rota específica para Senha (exige mais cuidado)
+app.post('/alterar-senha', (req, res) => {
+    const { senhaNova } = req.body;
+    const sql = "UPDATE usuarios SET senha = ? WHERE id = ?";
+    db.query(sql, [senhaNova, req.session.usuarioId], (err, result) => {
+        if (err) return res.status(500).send("Erro ao mudar senha");
+        res.send("Senha alterada com sucesso!");
+    });
+});
+
+
+
+
+
 
 // 4. Iniciar Servidor (Sempre por último)
 app.listen(port, () => {
     console.log('Servidor rodando em http://localhost:' + port);
 });
+
+
