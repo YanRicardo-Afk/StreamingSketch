@@ -4,33 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sketch Assistir</title>
+    <link rel="stylesheet" href="paginas/Pagina-Principal/style.css">
 </head>
 <body>
- <div id="perfil-container">
+<div id="perfil-container">
     <h1>Configurações da Conta</h1>
 
     <div class="config-item">
         <label>Nome:</label>
-        <span id="display-nome">Carregando...</span>
-        <button onclick="editar('nome')">Alterar</button>
+        <span id="display-nome">...</span>
+        <button onclick="abrirModal('nome')">Alterar</button>
     </div>
 
     <div class="config-item">
         <label>E-mail:</label>
-        <span id="display-email">Carregando...</span>
-        <button onclick="editar('email')">Alterar</button>
+        <span id="display-email">...</span>
+        <button onclick="abrirModal('email')">Alterar</button>
     </div>
 
     <div class="config-item">
-        <label>Plano Atual:</label>
-        <span id="display-plano">Carregando...</span>
-        <button onclick="editar('plano')">Mudar Plano</button>
+        <label>Plano:</label>
+        <span id="display-plano">...</span>
+        <button onclick="abrirModal('plano')">Mudar Plano</button>
     </div>
+</div>
 
-    <div class="config-item">
-        <label>Segurança:</label>
-        <span>********</span>
-        <button onclick="editar('senha')">Alterar Senha</button>
+<div id="modal-editar" class="modal">
+    <div class="modal-conteudo">
+        <h3 id="modal-titulo">Editar</h3>
+        
+        <input type="text" id="input-geral" style="display: none;">
+
+        <select id="select-plano" style="display: none;">
+            <option value="free">Free</option>
+            <option value="pro">Pro</option>
+        </select>
+
+        <div class="modal-botoes">
+            <button onclick="fecharModal()">Cancelar</button>
+            <button id="btn-salvar" class="btn-confirmar">Salvar</button>
+        </div>
     </div>
 </div>
 
