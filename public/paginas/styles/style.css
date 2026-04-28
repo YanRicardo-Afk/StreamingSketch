@@ -19,26 +19,36 @@ section{
     display: flex;
     gap: 5px;
 }
-.btn-login{
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #53589A;
-    
-    border-radius: 33px;
-    padding: 7px 14px;
-    font-weight: 600;
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0,);
-    color: #FFFFFF;
-    cursor: pointer;
-    transition: background-color .3s ease;
-}
-.btn-login a{
-    text-decoration: none;
+/* Correção global de links e fontes */
+a {
+    text-decoration: none; /* Remove sublinhado de todos os links */
     color: inherit;
 }
 
-.btn-login:hover{
+/* Ajuste do botão para ser 100% clicável */
+.btn-login {
+    border: none;
+    display: inline-flex; /* Melhor que flex para botões de texto */
+    justify-content: center;
+    align-items: center;
+    background-color: #53589A;
+    border-radius: 33px;
+    padding: 10px 20px; /* Aumentei um pouco o preenchimento */
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: 0.3s;
+    gap: 10px;
+}
+
+.btn-login:hover {
     background-color: #373b68;
+    transform: translateY(-2px); /* Efeito suave ao passar o mouse */
+}
+
+/* Títulos das seções */
+.section-title {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 30px;
 }
