@@ -1,28 +1,128 @@
-.modal {
-    display: none; 
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.8);
+/* Importando uma fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    /* Degradê combinando com a página de streaming */
+    background: linear-gradient(135deg, #1e1e1e 0%, #53589A 100%);
+    color: white;
+    min-height: 100vh;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
+#perfil-container {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.config-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.config-item label {
+    font-weight: 300;
+    color: #ccc;
+}
+
+.config-item span {
+    font-weight: 600;
+    color: #fff;
+}
+
+button {
+    background: #53589A;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.9em;
+}
+
+button:hover {
+    background: #6a71c9;
+    transform: translateY(-2px);
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
 .modal-conteudo {
-    background-color: #1e1e1e;
+    background: #1e1e1e;
     padding: 30px;
-    border-radius: 12px;
+    border-radius: 15px;
     width: 90%;
     max-width: 400px;
-    text-align: center;
     border: 1px solid #53589A;
+    text-align: center;
 }
 
 .modal-conteudo input, .modal-conteudo select {
     width: 100%;
-    padding: 10px;
-    margin: 20px 0;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #333;
     background: #2a2a2a;
     color: white;
-    border: 1px solid #444;
+    box-sizing: border-box; /* Garante que o padding não quebre a largura */
 }
+
+.modal-botoes {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+#btn-cancelar {
+    background: #444;
+}
+
+.btn-confirmar {
+    background: #53589A;
+}
+
+/* ÁREA PERIGOSA (Excluir/Sair) */
+.acoes-perigosas {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#btn-logout { background: #333; }
+#btn-excluir { background: #9a5353; }
+
+#btn-excluir:hover { background: #c0392b; }
