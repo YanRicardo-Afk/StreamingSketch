@@ -12,10 +12,172 @@
         <a href="#" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i> <span class="nav-text">Buscar</span></a>
         <a href="perfil.html" class="nav-link"><i class="fa-solid fa-user"></i> <span class="nav-text">Perfil</span></a>
     </nav>
+<div class="sk-root">
 
-    <main id="content">
-        <h1>Bem-vindo ao Sketch</h1>
-        <p>Seu catálogo de animações aparecerá aqui.</p>
-    </main>
+
+
+  <!-- HERO -->
+  <div class="sk-hero">
+    <div class="sk-hero-bg"></div>
+
+    <!--
+      ════════════════════════════════════════════
+      SUBSTITUA O VÍDEO AQUI
+      Troque o bloco .sk-video-placeholder pelo elemento abaixo:
+
+      <video class="sk-video-slot" autoplay muted loop playsinline>
+        <source src="SEU_VIDEO.mp4" type="video/mp4">
+      </video>
+
+      Ou para um iframe (YouTube embed sem controles):
+      <iframe class="sk-video-slot" src="https://www.youtube.com/embed/SEU_ID?autoplay=1&mute=1&loop=1&controls=0&playlist=SEU_ID" frameborder="0" allow="autoplay"></iframe>
+      ════════════════════════════════════════════
+    -->
+<div class="sk-video-placeholder">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 5v14l11-7z"/>
+  </svg>
+  <iframe 
+    class="sk-video-slot" 
+    src="https://www.youtube.com/embed/TQnykT4y3w8?autoplay=1&mute=1" 
+    frameborder="0" 
+    allow="autoplay; encrypted-media" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+    <div class="sk-hero-overlay"></div>
+
+    <div class="sk-hero-info">
+      <h1>Infinity Train</h1>
+      <p>diferentes passageiros precisam atravessar carruagens repletas de mundos surreais para encontrar o caminho de casa.</p>
+      <div class="sk-hero-btns">
+        <button class="sk-play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          Assistir agora
+        </button>
+        <button class="sk-info-btn">+ Minha lista</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÕES / CARROSSÉIS -->
+  <div class="sk-sections">
+
+    <!-- Continue assistindo -->
+    <div class="sk-section">
+      <div class="sk-section-title">Continue assistindo</div>
+      <div class="sk-carousel">
+        <button class="sk-cbtn prev" onclick="slide(this,-1)" disabled>&#8249;</button>
+        <div class="sk-track-outer">
+          <div class="sk-track">
+            <!--
+              CONTINUE ASSISTINDO — cards largos (16:9)
+              Substitua cada .sk-card-wide por:
+              <div class="sk-card-wide">
+                <img src="SUA_IMAGEM.jpg" alt="Nome da Série">
+                <div class="sk-progress"><div class="sk-progress-fill" style="width:45%"></div></div>
+              </div>
+              (ajuste o % do width para o progresso real)
+              — 6 slots abaixo —
+            -->
+            <div class="sk-card-wide"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>série 1</div><div class="sk-progress"><div class="sk-progress-fill" style="width:60%"></div></div></div>
+            <div class="sk-card-wide"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>série 2</div><div class="sk-progress"><div class="sk-progress-fill" style="width:30%"></div></div></div>
+            <div class="sk-card-wide"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>série 3</div><div class="sk-progress"><div class="sk-progress-fill" style="width:80%"></div></div></div>
+            <div class="sk-card-wide"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>série 4</div><div class="sk-progress"><div class="sk-progress-fill" style="width:20%"></div></div></div>
+            <div class="sk-card-wide"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>série 5</div><div class="sk-progress"><div class="sk-progress-fill" style="width:50%"></div></div></div>
+            <div class="sk-card-wide"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>série 6</div><div class="sk-progress"><div class="sk-progress-fill" style="width:10%"></div></div></div>
+          </div>
+        </div>
+        <button class="sk-cbtn next" onclick="slide(this,1)">&#8250;</button>
+      </div>
+    </div>
+
+    <div class="sk-divider"></div>
+
+    <!-- Os mais assistidos -->
+    <div class="sk-section">
+      <div class="sk-section-title">Os mais assistidos</div>
+      <div class="sk-carousel">
+        <button class="sk-cbtn prev" onclick="slide(this,-1)" disabled>&#8249;</button>
+        <div class="sk-track-outer">
+          <div class="sk-track">
+            <!--
+              OS MAIS ASSISTIDOS — cards poster (2:3)
+              Substitua cada .sk-card por:
+              <div class="sk-card">
+                <img src="SUA_IMAGEM.jpg" alt="Nome"> 
+              </div>
+              — 10 slots abaixo —
+            -->
+            <div class="sk-card"><img src="assents/Series/1.jpeg" alt="Nome"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 1</div></div>
+            <div class="sk-card"><img src="assents/Series/2.jpeg" alt="Nome"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 2</div></div>
+            <div class="sk-card"><img src="assents/Series/3.jpeg" alt="Nome"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 3</div></div>
+            <div class="sk-card"><img src="assents/Series/4.jpeg" alt="Nome"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 4</div></div>
+            <div class="sk-card"><img src="assents/Series/5.jpeg" alt="Nome"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 5</div></div>
+            <div class="sk-card"><img src="assents/Series/6.jpeg" alt="Nome"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 6</div></div>
+            <div class="sk-card"><img src="assents/Series/7.jpeg" alt="Nome"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 7</div></div>
+            <div class="sk-card"><img src="assents/Series/8.jpeg" alt="Nome"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 8</div></div>
+            <div class="sk-card"><img src="assents/Series/9.jpeg" alt="Nome"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 9</div></div>
+            <div class="sk-card"><img src="assents/Series/10.jpeg" alt="Nome"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 10</div></div>
+          </div>
+        </div>
+        <button class="sk-cbtn next" onclick="slide(this,1)">&#8250;</button>
+      </div>
+    </div>
+
+    <div class="sk-divider"></div>
+
+    <!-- Novidades -->
+    <div class="sk-section">
+      <div class="sk-section-title">Novidades</div>
+      <div class="sk-carousel">
+        <button class="sk-cbtn prev" onclick="slide(this,-1)" disabled>&#8249;</button>
+        <div class="sk-track-outer">
+          <div class="sk-track">
+            <!--
+              NOVIDADES — mesma estrutura dos posters 2:3
+              — 8 slots abaixo —
+            -->
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 1</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 2</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 3</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 4</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 5</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 6</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 7</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 8</div></div>
+          </div>
+        </div>
+        <button class="sk-cbtn next" onclick="slide(this,1)">&#8250;</button>
+      </div>
+    </div>
+
+    <div class="sk-divider"></div>
+
+    <!-- Clássicos -->
+    <div class="sk-section">
+      <div class="sk-section-title">Clássicos que marcaram época</div>
+      <div class="sk-carousel">
+        <button class="sk-cbtn prev" onclick="slide(this,-1)" disabled>&#8249;</button>
+        <div class="sk-track-outer">
+          <div class="sk-track">
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 1</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 2</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 3</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 4</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 5</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 6</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 7</div></div>
+            <div class="sk-card"><div class="sk-card-ph"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>série 8</div></div>
+          </div>
+        </div>
+        <button class="sk-cbtn next" onclick="slide(this,1)">&#8250;</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="paginas/Pagina-Principal/paginaPrincipal.js"></script>
 </body>
 </html>
