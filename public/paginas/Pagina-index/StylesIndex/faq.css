@@ -1,0 +1,79 @@
+/* ==========================================================================
+   ESTILO DA SEÇÃO DE PERGUNTAS FREQUENTES (FAQ ACCORDION)
+   ========================================================================== */
+.faq-section {
+    background-color: #121214;
+    padding: 5rem 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 3px solid #000;
+}
+
+.faq-container {
+    width: 100%;
+    max-width: 850px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Item individual do FAQ (Bordas horizontais idênticas ao seu segundo print) */
+.faq-item {
+    border-bottom: 1px solid #2b2b2e;
+}
+
+/* Estilo do botão da pergunta */
+.faq-question {
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.faq-question:hover {
+    color: #C71555; /* A pergunta acende em rosa no hover */
+}
+
+/* Seta minimalista da direita */
+.faq-arrow {
+    font-size: 0.9rem;
+    transform: rotate(90deg); /* Aponta para o lado por padrão */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #606068;
+}
+
+/* Caixa escondida que segura a resposta */
+.faq-answer {
+    max-height: 0; /* Começa com altura 0 (totalmente escondida) */
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer p {
+    font-family: 'Segoe UI', sans-serif;
+    color: #a0a0a8;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding-bottom: 1.5rem;
+}
+
+/* Classes utilitárias ativadas via JavaScript ao clicar */
+.faq-item.active .faq-arrow {
+    transform: rotate(270deg); /* Seta gira para cima quando aberto */
+    color: #C71555;
+}
+
+.faq-item.active .faq-question {
+    color: #C71555;
+}

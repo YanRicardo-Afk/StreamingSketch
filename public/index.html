@@ -1,110 +1,238 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="paginas/styles/style.css">
-    <link rel="stylesheet" href="paginas/styles/header.css">
-    <link rel="stylesheet" href="paginas/styles/home.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Sketch Limbo</title>
+    <link rel="stylesheet" href="paginas/Pagina-index/StylesIndex/main.css">
+    <link rel="stylesheet" href="paginas/Pagina-index/StylesIndex/navbar.css">
+    <link rel="stylesheet" href="paginas/Pagina-index/StylesIndex/hero.css">
+    <link rel="stylesheet" href="paginas/Pagina-index/StylesIndex/limbo.css">
+    <link rel="stylesheet" href="paginas/Pagina-index/StylesIndex/plans.css">
+    <link rel="stylesheet" href="paginas/Pagina-index/StylesIndex/faq.css">
 
-    <title>Sketch</title>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-    <header>
-        <nav id="navbar">
-            <i class="fa-solid fa-cat" id="nav_logo"> Sketch</i>
-            <ul id="nav-list">
-                <li class="nav-item active"> <a href="#home"> Início </a> </li>
-                <li class="nav-item"> <a href="#carrossel"> Populares </a> </li>
-                <li class="nav-item"> <a href="#planos"> Planos </a> </li>
-                <li class="nav-item"> <a href="#perguntas"> FAQ </a> </li>
-            </ul>
-            <div class="div-botao-assinar">
-                <a href="Login.html" class="btn-login">Entrar <i class="fa-solid fa-cat"></i></a>
-                <a href="Cadastro.html" class="btn-login">Assinar <i class="fa-solid fa-cat"></i></a>
+
+    <div class="tv-overlay">
+        <div class="tv-static"></div>
+        <div class="tv-line"></div>
+    </div>
+<div class="main-wrapper">
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="#">
+                    <img src="assents/SketchParaUsarComTraçado.png" alt="Logo">
+                </a>
             </div>
-            <button id="mobile-btn"><i class="fa-solid fa-bars"></i></button>
+
+            <button class="menu-toggle" aria-label="Abrir menu" id="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="nav-actions" id="nav-actions">
+                <a href="Login.html" class="btn btn-login" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Entrar</a>
+                <a href="Cadastro.html" class="btn btn-register" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Cadastrar</a>
+            </div>
         </nav>
-        <div id="mobile-menu">
-            <ul id="mobile-nav-list">
-                <li class="nav-item"> <a href="#home"> Início </a> </li>
-                <li class="nav-item"> <a href="#carrossel"> Populares </a> </li>
-                <li class="nav-item"> <a href="#planos"> Planos </a> </li>
-                <li class="nav-item"> <a href="#perguntas"> Perguntas </a> </li>
-            </ul>
-            <a href="Login.html" class="btn-login">Entrar</a>
-            <a href="Cadastro.html" class="btn-login">Assinar</a>
+
+        <section class="hero">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="assents/static.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos.
+            </video>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                
+                <div class="hero-text-side">
+                    <h1 class="hero-main-title" id="anim-titulo">
+                        O streaming feito para fãs de animação
+                    </h1>
+                    <p class="hero-sub-title" id="anim-subtitulo">
+                        Escolha um plano a partir de R$ 9,99/mês
+                    </p>
+                    
+                    <a href="Cadastro.html" class="btn-subscribe" id="anim-botao" style="text-decoration: none; text-align: center; display: inline-block;">Assinar</a>
+                </div>
+
+                <div class="hero-logo-side">
+                    <div class="hero-logo anim-logo">
+                        <img src="assents/SketchParaUsarComTraçado.png" alt="Logo Principal">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <div class="warning-ticker">
+        <div class="ticker-track">
+            <span>WARNING!</span>
+            <span>WARNING!</span>
+            <span>WARNING!</span>
+            <span>WARNING!</span>
+            <span>WARNING!</span>
+            <span>WARNING!</span>
+            <span>WARNING!</span>
+            <span>WARNING!</span>
+            <span>WARNING!</span>
+            <span>WARNING!</span>
         </div>
-    </header>
+    </div>
 
-    <main id="content">
-        <section id="home">
-            <div id="cta">
-                <h1 class="title">Reviva memórias e descubra novos mundos: o streaming feito para fãs de animação</h1>
-                <p class="description">Escolha um plano a partir de R$ 9,99/mês</p>
-                <div class="cta-buttons">
-                    <a href="Cadastro.html" class="btn-login"> Assinar <i class="fa-solid fa-cat"></i> </a>
+        
+    <section class="limbo-about">
+        <div class="about-container">
+            
+            <div class="about-text-box">
+                <h2 class="about-title">BEM-VINDO AO <span class="highlight">SKETCH LIMBO</span></h2>
+                <p class="about-description">
+                    Animações canceladas e trancadas pelas grandes corporações. Nós não aceitamos o esquecimento.
+                </p>
+                <p class="bold-alert-white">
+                    Se foi jogado no limbo, você assiste aqui.
+                </p>
+            </div>
+
+            <div class="about-carousel-wrapper">
+                <h3 class="carousel-title">Aqui você encontra:</h3>
+                
+                <div class="carousel-navigation-container">
+                    <button class="side-control-btn" id="prev-btn" aria-label="Anterior">&lt;</button>
+                    
+                    <div class="catalog-carousel" id="carousel-track">
+                        <div class="carousel-card">
+                            <div class="card-img-wrapper">
+                                <img src="https://placehold.co/200x300/282a36/ff79c6?text=Capa+1" alt="Série 1">
+                            </div>
+                            <h4>Nome da Série 1</h4>
+                        </div>
+                        <div class="carousel-card">
+                            <div class="card-img-wrapper">
+                                <img src="https://placehold.co/200x300/282a36/50fa7b?text=Capa+2" alt="Série 2">
+                            </div>
+                            <h4>Nome da Série 2</h4>
+                        </div>
+                        <div class="carousel-card">
+                            <div class="card-img-wrapper">
+                                <img src="https://placehold.co/200x300/282a36/8be9fd?text=Capa+3" alt="Série 3">
+                            </div>
+                            <h4>Nome da Série 3</h4>
+                        </div>
+                        <div class="carousel-card">
+                            <div class="card-img-wrapper">
+                                <img src="https://placehold.co/200x300/282a36/ffb86c?text=Capa+4" alt="Série 4">
+                            </div>
+                            <h4>Nome da Série 4</h4>
+                        </div>
+                    </div>
+
+                    <button class="side-control-btn" id="next-btn" aria-label="Próximo">&gt;</button>
                 </div>
             </div>
-        </section>
 
-        <section id="carrossel">
-            <h2 class="section-title">Os mais assistidos</h2>
-            <div class="carousel-container">
-                <div class="card"><img src="assents/Series/1.jpeg" alt="Série 1"></div>
-                <div class="card"><img src="assents/Series/2.jpeg" alt="Série 2"></div>
-                <div class="card"><img src="assents/Series/3.jpeg" alt="Série 3"></div>
-                <div class="card"><img src="assents/Series/4.jpeg" alt="Série 4"></div>
-                <div class="card"><img src="assents/Series/5.jpeg" alt="Série 5"></div>
+        </div>
+    </section>
+
+    <section class="plans-section">
+        <h2 class="section-title">ESCOLHA SEU PLANO</h2>
+        
+        <div class="plans-container">
+            <div class="plan-card">
+                <h3 class="plan-name">BÁSICO</h3>
+                <span class="plan-price">GRÁTIS</span>
+                
+                <ul class="plan-features">
+                    <li>Com Anúncios</li>
+                    <li>Acesso limitado</li>
+                    <li>2 Telas simultâneas</li>
+                    <li>Qualidade 1080p</li>
+                </ul>
+                
+                <a href="Cadastro.html" class="plan-btn" style="text-align: center; text-decoration: none; display: block; line-height: 20px;">ESCOLHER</a>
             </div>
-        </section>
 
-        <section id="planos">
-            <h2 class="section-title">Escolha seu plano</h2>
-            <div class="planos-grid">
-                <div class="plano-card">
-                    <h3 class="mudarcor">Basico</h3>
-                    <p>Gratis</p>
-                    <ul>
-                        <li>Anúncios</li>
-                        <li>Acesso limitado</li>
-                        <li>2 Telas simultâneas</li>
-                        <li>Qualidade 1080p</li>
-                    </ul>
-                    <a href="#" class="btn-login">Escolher</a>
+            <div class="plan-card premium-card">
+                <h3 class="plan-name">PREMIUM</h3>
+                <span class="plan-price">R$ 9,99/mês</span>
+                
+                <ul class="plan-features">
+                    <li>Sem Anúncios</li>
+                    <li>Acesso total ao acervo</li>
+                    <li>4 Telas simultâneas</li>
+                    <li>Qualidade 4K Ultra HD</li>
+                </ul>
+                
+                <a href="Cadastro.html" class="plan-btn btn-premium-action" style="text-align: center; text-decoration: none; display: block; line-height: 20px;">ESCOLHER</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="section-title">PERGUNTAS FREQUENTES</h2>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>O que é o Sketch Limbo e qual o objetivo?</span>
+                    <span class="faq-arrow">&#x276F;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>O Sketch Limbo é uma plataforma dedicada a resgatar, preservar e disponibilizar animações e desenhos que foram cancelados, deletados ou arquivados permanentemente pelas grandes corporações de mídia. Nosso objetivo é salvar a história da animação do esquecimento digital.</p>
                 </div>
-                <div class="plano-card destaque">
-                    <h3 class="mudarcor">Premium</h3>
-                    <p>R$ 9,99/mês</p>
-                    <ul>
-                        <li>Sem Anúncios</li>
-                        <li>Acesso total</li>
-                        <li>4 Telas simultâneas</li>
-                        <li>Qualidade 4K Ultra HD</li>
-                    </ul>
-                    <a href="#" class="btn-login">Escolher</a>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Os desenhos salvos correm risco de sumir de novo?</span>
+                    <span class="faq-arrow">&#x276F;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Não no nosso turno. Nosso acervo é mantido de forma descentralizada por fãs e arquivistas. Se foi jogado no limbo das corporações, aqui ele fica seguro e disponível para sempre.</p>
                 </div>
             </div>
-        </section>
 
-        <section id="perguntas">
-            <h2 class="section-title">Perguntas Frequentes</h2>
-            <div class="faq-container">
-                <details>
-                    <summary class="mudarcor">Como posso cancelar minha assinatura?</summary>
-                    <p>Você pode cancelar a qualquer momento nas configurações do seu perfil.</p>
-                </details>
-                <details>
-                    <summary class="mudarcor">Em quais aparelhos posso assistir?</summary>
-                    <p>Smart TVs, Celulares, Tablets e Computadores.</p>
-                </details>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Qual a diferença entre o plano Grátis e o Premium?</span>
+                    <span class="faq-arrow">&#x276F;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>O plano Grátis oferece acesso ao catálogo básico com anúncios para ajudar a manter os servidores ativos. O plano Premium remove todos os anúncios, libera o acervo completo em qualidade máxima de som e imagem e permite até 4 telas ao mesmo tempo.</p>
+                </div>
             </div>
-        </section>
-    </main>
 
-    <script src="paginas/Script/script.js"></script>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Como posso sugerir uma animação para ser resgatada?</span>
+                    <span class="faq-arrow">&#x276F;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Dentro da plataforma temos uma aba de "Resgates". Lá, usuários Premium podem enviar links, sugerir títulos esquecidos e votar nas próximas produções que nossa equipe de arquivistas deve procurar e restaurar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 SKETCH LIMBO. Todos os direitos resgatados.</p>
+            <div class="footer-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="paginas/Pagina-index/JsIndex/faq.js"></script>
+    <script src="paginas/Pagina-index/JsIndex/intro.js"></script>
+    <script src="paginas/Pagina-index/JsIndex/carossel.js"></script>
 </body>
 </html>

@@ -1,0 +1,165 @@
+/* ==========================================================================
+   SEÇÃO SKETCH LIMBO: TEXTOS ENXUTOS + CARDS VERTICAIS + SETAS SOLTAS
+   ========================================================================== */
+
+.limbo-about {
+    background-color: #121214;
+    padding: 4rem 2rem;
+    width: 100%;
+    border-bottom: 5px solid #000;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Reduzido o espaçamento global */
+}
+
+/* --- BLOCO DE TEXTO REDUZIDO --- */
+.about-text-box {
+    color: #ffffff;
+    max-width: 650px;
+}
+
+.about-title {
+    font-family: 'Impact', sans-serif;
+    font-size: 2.2rem; /* Diminuído o tamanho do título */
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.about-title .highlight {
+    color: #C71555;
+    background-color: #fff;
+    padding: 0 8px;
+    display: inline-block;
+    transform: rotate(-2deg);
+}
+
+.about-description {
+    font-size: 1.05rem; /* Texto menor e mais discreto */
+    line-height: 1.5;
+    color: #c0c0c8;
+    margin-bottom: 1rem;
+}
+
+.bold-alert-white {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.4rem; /* Frase de impacto menor */
+    color: #ffffff; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0px #000;
+}
+
+/* --- BLOCO DO CARROSSEL --- */
+.about-carousel-wrapper {
+    width: 100%;
+}
+
+.carousel-title {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.carousel-navigation-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ALTERADO: Botões totalmente invisíveis, aparecendo apenas o < e > soltos */
+.side-control-btn {
+    background: none;      /* Remove fundo preto */
+    border: none;          /* Remove borda rosa */
+    color: #C71555;        /* Cor das setas */
+    font-family: 'Impact', sans-serif;
+    font-size: 2.5rem;     /* Tamanho grande para a seta ficar fácil de clicar */
+    cursor: pointer;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, color 0.2s ease;
+    user-select: none;
+}
+
+.side-control-btn:hover {
+    color: #ffffff;        /* Seta acende em branco no hover */
+    transform: scale(1.2); /* Dá um leve crescimento */
+}
+
+/* Trilha do Carrossel */
+.catalog-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: hidden;
+    padding: 10px 5px;
+    scroll-behavior: smooth;
+    flex-grow: 1;
+}
+
+/* --- VOLTOU: CARDS EM PÉ (ESTILO POSTER) --- */
+.carousel-card {
+    flex: 0 0 160px;       /* Ajustada largura para o formato vertical */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Quadro da Imagem Vertical */
+.card-img-wrapper {
+    width: 100%;
+    height: 230px;         /* Altura em pé para formato de pôster */
+    overflow: hidden;
+    border-radius: 6px;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0px #C71555;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Efeitos de Hover nos Cards */
+.carousel-card:hover .card-img-wrapper {
+    transform: translateY(-4px);
+    box-shadow: 5px 5px 0px #ffffff;
+}
+
+.carousel-card:hover img {
+    transform: scale(1.06);
+}
+
+/* Nome da série abaixo da foto */
+.carousel-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 8px;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;    /* Centralizado combina melhor com cards em pé */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .about-title { font-size: 1.8rem; }
+    .carousel-card { flex: 0 0 130px; }
+    .card-img-wrapper { height: 190px; }
+    .side-control-btn { font-size: 2rem; padding: 0 5px; }
+}

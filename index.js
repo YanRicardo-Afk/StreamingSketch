@@ -20,7 +20,7 @@ app.use(session({
 const db = mysql.createConnection({
     host: 'localHost',
     user: 'root',
-    password: '',
+    password: 'mysqllinux',
 });
 
 db.connect((err) => {

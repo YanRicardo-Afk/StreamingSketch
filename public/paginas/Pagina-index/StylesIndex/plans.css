@@ -1,0 +1,166 @@
+/* ==========================================================================
+   ESTILO DA SEÇÃO DE PLANOS (CORES DO SKETCH LIMBO)
+   ========================================================================== */
+.plans-section {
+    background-color: #121214;
+    padding: 5rem 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 3px solid #000;
+}
+
+/* Título padrão usado nas seções de baixo */
+.section-title {
+    font-family: 'Impact', sans-serif;
+    font-size: 2.5rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0px #000;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+/* Grid para alinhar os dois cards lado a lado */
+.plans-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Card baseado na estrutura cinza do seu print, mas adaptado ao tema */
+.plan-card {
+    background-color: #2b2b2e;
+    border: 3px solid #000;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 6px 6px 0px #000000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card premium ganha contorno e sombra com o rosa característico */
+.premium-card {
+    border: 3px solid #C71555;
+    box-shadow: 6px 6px 0px #C71555;
+}
+
+.plan-name {
+    font-family: 'Impact', sans-serif;
+    font-size: 2rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+/* R$ e Grátis usando o tom lilás/neon do seu print original */
+.plan-price {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #7983ff; /* Roxo suave elétrico */
+    margin-bottom: 2rem;
+}
+
+/* Lista de benefícios centralizada */
+.plan-features {
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.plan-features li {
+    font-family: 'Segoe UI', sans-serif;
+    color: #c0c0c8;
+    font-size: 1.05rem;
+}
+
+/* Botões baseados no formato arredondado do print */
+.plan-btn {
+    background-color: #4c56b5;
+    color: #ffffff;
+    border: 2px solid #000;
+    padding: 12px 35px;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    transition: all 0.2s ease;
+}
+
+.plan-btn:hover {
+    transform: scale(1.05);
+    background-color: #3b4394;
+    box-shadow: 0 0 10px rgba(76, 86, 181, 0.5);
+}
+
+/* Botão do card premium vira rosa quando passa o mouse */
+.btn-premium-action:hover {
+    background-color: #C71555;
+    box-shadow: 0 0 15px #C71555;
+}
+
+/* Efeito de hover elástico nos cards */
+.plan-card:hover {
+    transform: translateY(-5px);
+}
+
+/* --- ESTILO DO RODAPÉ (FOOTER) --- */
+.main-footer {
+    background-color: #0b0b0c;
+    padding: 2rem;
+    width: 100%;
+    border-top: 3px solid #000;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-content p {
+    color: #606068;
+    font-size: 0.9rem;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #606068;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #C71555;
+}
+
+@media (max-width: 768px) {
+    .plans-container { flex-direction: column; align-items: center; }
+    .footer-content { flex-direction: column; text-align: center; }
+}
