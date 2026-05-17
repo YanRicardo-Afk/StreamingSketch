@@ -74,14 +74,22 @@ app.post('/login', (req, res) => {
     const sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
     
     db.query(sql, [email, senha], (err, results) => {
-        if (err) return res.status(500).send("Erro no servidor");
+        // Define explicitamente que a resposta é um JSON
+        res.setHeader('Content-Type', 'application/json');
+
+        if (err) {
+            console.error("Erro no servidor:", err);
+            return res.status(500).json({ sucesso: false, mensagem: "Erro interno no servidor." });
+        }
 
         if (results.length > 0) {
             req.session.usuarioId = results[0].id;
             req.session.usuarioNome = results[0].nome;
-            res.redirect('/paginaPrincipal.html');
+            // Retorna sucesso em formato JSON para o JS tratar sem recarregar a página
+            return res.status(200).json({ sucesso: true, redirecionar: '/paginaPrincipal.html' });
         } else {
-            res.send("E-mail ou senha incorretos.");
+            // Retorna erro em formato JSON se as credenciais estiverem incorretas
+            return res.status(401).json({ sucesso: false, mensagem: "E-mail ou senha incorretos." });
         }
     });
 });
@@ -196,5 +204,3 @@ app.post('/atualizar-perfil', (req, res) => {
 app.listen(port, () => {
     console.log('Servidor rodando em http://localhost:' + port);
 });
-
-

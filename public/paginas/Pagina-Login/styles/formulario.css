@@ -99,3 +99,26 @@ p {
 .link-cadastro a:hover {
     text-decoration: underline;
 }
+/* Estilização da Mensagem de Erro (UX) */
+.error-message {
+    color: #ff4a4a;
+    font-size: 0.85em;
+    margin-bottom: 15px;
+    text-align: left;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+/* Opcional: adiciona um pequeno ícone de alerta antes do texto */
+.error-message::before {
+    content: " ";
+    margin-right: 5px;
+    font-size: 1em;
+}
+
+/* Classe aplicada via JS se houver erro no login */
+.campo input.input-error {
+    border-color: #ff4a4a;
+    background-color: rgba(255, 74, 74, 0.05);
+}

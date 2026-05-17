@@ -1,85 +1,191 @@
-// 1. Seleção dos elementos
+// 1. Seleção dos elementos estruturais
 const etapaDados = document.getElementById('etapa-dados');
 const etapaPlanos = document.getElementById('etapa-planos');
 const btnProximo = document.querySelector('.btn-proximo');
 const btnVoltar = document.querySelector('.btn-voltar');
 const cards = document.querySelectorAll('.card-plano');
+const barraProgresso = document.getElementById('barra-progresso');
+const stepIndicator = document.getElementById('step-indicator');
+const form = document.getElementById('formCadastro');
 
-// 2. Lógica para mudar de aba (Próximo)
-btnProximo.addEventListener('click', () => {
-    // Validação simples: verifica se os campos da primeira parte estão preenchidos
-    const inputs = etapaDados.querySelectorAll('input');
-    let todosPreenchidos = true;
+// FUNÇÕES AUXILIARES DE VALIDAÇÃO (UX LIMPA)
+function definirErro(idInput, idErro, mensagem) {
+    const input = document.getElementById(idInput);
+    const erroSpan = document.getElementById(idErro);
+    if(input && erroSpan) {
+        input.classList.add('input-error-borda');
+        erroSpan.innerText = mensagem;
+    }
+}
 
-    inputs.forEach(input => {
-        if (!input.value) {
-            todosPreenchidos = false;
-            input.style.borderColor = "red"; // Avisa qual está vazio
-        } else {
-            input.style.borderColor = "#333";
-        }
-    });
+function limparErro(idInput, idErro) {
+    const input = document.getElementById(idInput);
+    const erroSpan = document.getElementById(idErro);
+    if(input && erroSpan) {
+        input.classList.remove('input-error-borda');
+        erroSpan.innerText = "";
+    }
+}
 
-    if (todosPreenchidos) {
-        etapaDados.style.display = 'none';
-        etapaPlanos.style.display = 'block';
-    } else {
-        alert("Por favor, preencha todos os campos antes de continuar.");
+// Limpeza de erros em tempo real enquanto o usuário digita
+const camposPrimeiraEtapa = ['nome', 'email', 'senha', 'confirma-senha'];
+camposPrimeiraEtapa.forEach(id => {
+    const input = document.getElementById(id);
+    if(input) {
+        input.addEventListener('input', () => {
+            limparErro(id, 'erro-' + (id === 'confirma-senha' ? 'confirma' : id));
+        });
     }
 });
 
-// 3. Lógica para Voltar
+// 2. CORREÇÃO UX: Alternar Visibilidade da Senha de Forma Infinita
+document.querySelectorAll('.toggle-password').forEach(botaoOlho => {
+    botaoOlho.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const inputSenha = document.getElementById(targetId);
+        
+        if (inputSenha.type === 'password') {
+            inputSenha.type = 'text';
+            this.classList.remove('fa-eye');
+            this.classList.add('fa-eye-slash');
+        } else {
+            inputSenha.type = 'password';
+            this.classList.remove('fa-eye-slash');
+            this.classList.add('fa-eye');
+        }
+    });
+});
+
+// 3. Validação Detalhada e Avanço para Etapa 2
+btnProximo.addEventListener('click', () => {
+    let valido = true;
+
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const senha = document.getElementById('senha').value;
+    const confirmaSenha = document.getElementById('confirma-senha').value;
+
+    // Validação: Campo Vazio e Números no Nome
+    const regexNumeros = /\d/;
+    if (!nome) {
+        definirErro('nome', 'erro-nome', 'O campo nome não pode ficar vazio.');
+        valido = false;
+    } else if (regexNumeros.test(nome)) {
+        definirErro('nome', 'erro-nome', 'O nome não deve conter números.');
+        valido = false;
+    }
+
+    // Validação: E-mail Vazio e Caractere '@'
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+        definirErro('email', 'erro-email', 'O campo e-mail não pode ficar vazio.');
+        valido = false;
+    } else if (!email.includes('@') || !regexEmail.test(email)) {
+        definirErro('email', 'erro-email', 'Insira um e-mail válido (ex: seu@email.com).');
+        valido = false;
+    }
+
+    // Validação: Senhas vazias e correspondência
+    if (!senha) {
+        definirErro('senha', 'erro-senha', 'Crie uma senha para sua conta.');
+        valido = false;
+    }
+    if (!confirmaSenha) {
+        definirErro('confirma-senha', 'erro-confirma', 'Confirme a sua senha.');
+        valido = false;
+    } else if (senha !== confirmaSenha) {
+        definirErro('confirma-senha', 'erro-confirma', 'As senhas informadas não coincidem.');
+        valido = false;
+    }
+
+    if (valido) {
+        // MICROINTERAÇÃO: Atualiza a barra para 100%
+        barraProgresso.style.width = '100%';
+        stepIndicator.innerText = "Etapa 2 de 2";
+        
+        etapaDados.style.display = 'none';
+        etapaPlanos.style.display = 'block';
+    }
+});
+
+// 4. Lógica para Voltar à Etapa 1
 btnVoltar.addEventListener('click', () => {
+    // MICROINTERAÇÃO: Retorna a barra para 50%
+    barraProgresso.style.width = '50%';
+    stepIndicator.innerText = "Etapa 1 de 2";
+
     etapaPlanos.style.display = 'none';
     etapaDados.style.display = 'block';
 });
 
-// 4. Seleção visual dos Cards de Plano
+// 5. Seleção Visual dos Cards de Plano
 cards.forEach(card => {
     card.addEventListener('click', () => {
         cards.forEach(c => c.classList.remove('selecionado'));
         card.classList.add('selecionado');
+        document.getElementById('erro-plano').innerText = ""; // Limpa erro de seleção
         
         const radio = card.querySelector('input[type="radio"]');
         radio.checked = true;
 
-        // NOVIDADE: Mostra ou esconde o cartão baseado no valor
         const areaPagamento = document.getElementById('area-pagamento');
         if (radio.value === 'pro') {
             areaPagamento.style.display = 'block';
-            // Opcional: tornar campos obrigatórios se for PRO
-            areaPagamento.querySelectorAll('input').forEach(i => i.required = true);
         } else {
             areaPagamento.style.display = 'none';
-            areaPagamento.querySelectorAll('input').forEach(i => i.required = false);
+            // Limpa erros ocultados do Pro caso mude para o free
+            limparErro('num-cartao', 'erro-cartao');
+            limparErro('cpf-input', 'erro-cpf');
+            limparErro('senha-cartao', 'erro-senha-cartao');
         }
     });
 });
 
-// 5. Finalizar (Onde você enviaria para o Banco de Dados no futuro)
-// 5. Finalizar (Enviando os dados para o servidor Node.js)
-const form = document.getElementById('formCadastro');
+// Limpeza dos erros do cartão sob digitação
+['num-cartao', 'cpf-input', 'senha-cartao'].forEach(id => {
+    const input = document.getElementById(id);
+    if(input){
+        input.addEventListener('input', () => {
+            let sufixo = id.split('-')[1] || 'senha-cartao';
+            if(id === 'senha-cartao') sufixo = 'senha-cartao';
+            limparErro(id, 'erro-' + sufixo);
+        });
+    }
+});
 
+// 6. Submissão Final do Formulário com Validação Híbrida Pro/Free
 form.addEventListener('submit', (e) => {
+    let valido = true;
     const planoSelecionado = document.querySelector('input[name="plano"]:checked');
-    const senha = document.getElementById('senha').value;
-    const confirma = document.getElementById('confirma-senha').value;
-
-    // Validação extra de segurança: as senhas batem?
-    if (senha !== confirma) {
-        e.preventDefault(); // Para o envio
-        alert("As senhas não coincidem! Verifique e tente novamente.");
-        return;
-    }
-
-    // O plano foi escolhido?
+    
     if (!planoSelecionado) {
-        e.preventDefault(); // Para o envio
-        alert("Por favor, escolha um plano antes de finalizar!");
+        e.preventDefault();
+        document.getElementById('erro-plano').innerText = "Por favor, selecione uma das opções de plano acima.";
+        valido = false;
         return;
     }
 
-    // Se chegou aqui, não damos o preventDefault(). 
-    // O navegador vai pegar todos os campos com 'name' e enviar para o Back-end.
-    console.log("Enviando dados para o servidor...");
+    // Se o plano for Pro, valida os campos financeiros obrigatórios
+    if (planoSelecionado.value === 'pro') {
+        const numCartao = document.getElementById('num-cartao').value.trim();
+        const cpf = document.getElementById('cpf-input').value.trim();
+        const senhaCartao = document.getElementById('senha-cartao').value;
+
+        if (!numCartao) {
+            definirErro('num-cartao', 'erro-cartao', 'O número do cartão é obrigatório.');
+            valido = false;
+        }
+        if (!cpf) {
+            definirErro('cpf-input', 'erro-cpf', 'O CPF é obrigatório para faturamento.');
+            valido = false;
+        }
+        if (!senhaCartao) {
+            definirErro('senha-cartao', 'erro-senha-cartao', 'Informe a senha do cartão.');
+            valido = false;
+        }
+    }
+
+    if (!valido) {
+        e.preventDefault(); // Impede o envio se houver erros na etapa 2
+    }
 });

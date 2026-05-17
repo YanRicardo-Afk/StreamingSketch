@@ -1,76 +1,82 @@
-header{
-    width: 100%;
-    padding: 28px 8%;
-}
+/* ==========================================================================
+   MENU DO TOPO E BOTÕES TORTOS (ESTILO REBELDE / Y2K)
+   ========================================================================== */
 
-#navbar{
-    width: 100%;
+.navbar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #c71555, #960f40);
+    padding: 1.2rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 100;
 }
 
-#nav_logo{
-    font-size: 24px;
-    color: #ffffff;
+.nav-logo img {
+    max-height: 40px;
+    display: block;
 }
 
-#nav-list{
+.nav-actions {
     display: flex;
-    list-style: none;
-    gap: 48px;
-}
-.nav-item a {
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
+    gap: 35px;
 }
 
-.nav-item.active a {
-    color: white;
-    border-bottom: 3px solid #53589A;
+/* Base para os botões estilizados e inclinados */
+.btn {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 24px;
+    cursor: pointer;
+    border: 2px solid #000000; /* Borda preta grossa estilo cartoon */
+    border-radius: 0px; /* Sem cantos arredondados para parecer mais bruto */
+    color: #ffffff;
+    position: relative;
+    background-color: #e91e63;
+    transform-style: preserve-3d;
+    transform: rotate(-7deg) scale(1); /* Deixa o botão tortinho para a esquerda */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico ao passar o mouse */
 }
 
-#mobile-btn {
-    display: none;
+/* A sombra preta deslocada atrás do botão */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #000000;
+    border: 2px solid #000000;
+    z-index: -1;
+    transform: translateZ(-1px) rotate(8deg) translate(4px, 4px); /* Joga a sombra pro lado e inverte a inclinação */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-#mobile-menu{
-    display: none;
+/* Variação de cor para o botão de Login (Branco) */
+.btn-login {
+    background-color: #ffffff;
+    color: #000000;
+    transform: rotate(5deg) scale(1); /* Esse inclina para o outro lado para contrastar */
 }
 
-@media screen and (max-width: 1170px) {
-    #nav-list{
-        display: none;
+.btn-login::before {
+    transform: translateZ(-1px) rotate(-6deg) translate(-2px, 3px);
+}
+
+/* Quando passa o mouse, o botão desentorta e cresce um pouco */
+.btn:hover { transform: rotate(0deg) scale(1.08); }
+.btn:hover::before { transform: translateZ(-1px) rotate(0deg) translate(0px, 0px); }
+
+/* Ajuste do Menu para o Celular */
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    .nav-actions {
+        display: none; /* Esconde os botões normais */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; width: 100%;
+        background-color: #C71555;
+        padding: 3rem 2rem; gap: 40px; align-items: center;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     }
-    #mobile-btn{
-        display: block;
-        border: none;
-        background-color: #53589A;
-        border-radius: 15px;
-        padding: 6px;
-        color: white;
-        font-size: 1rem;
-        cursor: pointer;
-
-
-    }
-
-        #mobile-menu.active{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-        }
-        #mobile-nav-list{
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 12px 0;
-        }
-        #mobile-nav-list .nav-item{
-            list-style: none;
-            text-align: center;
-    
-        }
+    .nav-actions.active { display: flex; } /* Se tiver a classe 'active', mostra o menu aberto */
 }

@@ -14,22 +14,38 @@
 
 </head>
 <body>
-    <header>
-        <nav id="navbar">
-            <i class="fa-solid fa-cat" id="nav_logo">Sketch</i>
+<div class="main-wrapper">
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assents/SketchParaUsarComTraçado.png" alt="Logo">
+                </a>
+            </div>
 
-            <!-- Coloquei essa div para separar os botões -->
-            <div class="div-botao-assinar">
-            <button class="btn-login"> <a href="Login.html"> Entrar </a> <i class="fa-solid fa-cat" id="nav_logo"> </i> </button>
+            <button class="menu-toggle" aria-label="Abrir menu" id="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
 
+            <div class="nav-actions" id="nav-actions">
+                <a href="Login.html" class="btn btn-login" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Entrar</a>
+                <a href="Cadastro.html" class="btn btn-register" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Cadastrar</a>
             </div>
         </nav>
 
-            
-        </div>
-    </header>
-
 <main class="container-cadastro">
+    <!-- Novo contêiner unificado do formulário para agrupar a barra de progresso -->
+    <div class="cadastro-box">
+        
+        <!-- MICROINTERAÇÃO: Barra de Progresso Superior -->
+        <div class="progress-container">
+            <div class="progress-bar" id="barra-progresso"></div>
+            <div class="steps-text">
+                <span id="step-indicator">Etapa 1 de 2</span>
+            </div>
+        </div>
+
         <form id="formCadastro" method="POST" action="/cadastrar">
             
             <section id="etapa-dados">
@@ -38,22 +54,32 @@
 
                 <div class="campo">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+                    <span class="erro-texto" id="erro-nome"></span>
                 </div>
 
                 <div class="campo">
                     <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    <input type="text" id="email" name="email" placeholder="seu@email.com">
+                    <span class="erro-texto" id="erro-email"></span>
                 </div>
 
-                <div class="campo">
+                <div class="campo campo-senha">
                     <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required>
+                    <div class="input-wrapper">
+                        <input type="password" id="senha" name="senha" placeholder="Crie uma senha">
+                        <i class="fa-regular fa-eye toggle-password" data-target="senha"></i>
+                    </div>
+                    <span class="erro-texto" id="erro-senha"></span>
                 </div>
 
-                <div class="campo">
+                <div class="campo campo-senha">
                     <label for="confirma-senha">Confirmar Senha</label>
-                    <input type="password" id="confirma-senha" placeholder="Repita a senha" required>
+                    <div class="input-wrapper">
+                        <input type="password" id="confirma-senha" placeholder="Repita a senha">
+                        <i class="fa-regular fa-eye toggle-password" data-target="confirma-senha"></i>
+                    </div>
+                    <span class="erro-texto" id="erro-confirma"></span>
                 </div>
 
                 <button type="button" class="btn-proximo">Próximo: Escolher Plano</button>
@@ -61,6 +87,7 @@
 
             <section id="etapa-planos">
                 <h2>Escolha seu plano</h2>
+                <span class="erro-texto text-center" id="erro-plano" style="display:block; margin-bottom:10px;"></span>
                 
                 <div class="cards-container">
                     <div class="card-plano" id="plano-free">
@@ -90,15 +117,21 @@
                     <h3>Dados de Pagamento (Premium)</h3>
                     <div class="campo">
                         <label>Número do Cartão</label>
-                        <input type="text" name="numero_cartao" placeholder="0000 0000 0000 0000">
+                        <input type="text" name="numero_cartao" id="num-cartao" placeholder="0000 0000 0000 0000">
+                        <span class="erro-texto" id="erro-cartao"></span>
                     </div>
                     <div class="campo">
                         <label>CPF</label>
-                        <input type="text" name="cpf" placeholder="000.000.000-00">
+                        <input type="text" name="cpf" id="cpf-input" placeholder="000.000.000-00">
+                        <span class="erro-texto" id="erro-cpf"></span>
                     </div>
-                    <div class="campo">
+                    <div class="campo campo-senha">
                         <label>Senha do Cartão</label>
-                        <input type="password" name="senha_cartao" placeholder="****">
+                        <div class="input-wrapper">
+                            <input type="password" name="senha_cartao" id="senha-cartao" placeholder="****">
+                            <i class="fa-regular fa-eye toggle-password" data-target="senha-cartao"></i>
+                        </div>
+                        <span class="erro-texto" id="erro-senha-cartao"></span>
                     </div>
                 </div>
                 
@@ -110,7 +143,8 @@
             </section>
 
         </form>
-    </main>
+    </div>
+</main>
     <script src="paginas/Pagina-Cadastro/Javascript/script.js"></script>
     <script src="paginas/Script/script.js"></script>
 </body>
