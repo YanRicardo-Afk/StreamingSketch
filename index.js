@@ -20,7 +20,7 @@ app.use(session({
 const db = mysql.createConnection({
     host: 'localHost',
     user: 'root',
-    password: 'mysqllinux',
+    password: '',
 });
 
 db.connect((err) => {
@@ -52,7 +52,7 @@ db.connect((err) => {
     });
 });
 
-// 3. Rotas da API
+// 3. Rotas 
 
 
 
@@ -109,7 +109,7 @@ app.post('/alterar-nome', (req, res) => {
 });
 
 
-// parte para pegar os dados e depois dar para alterar
+
 
 
 // Rota para pegar todos os dados do usuário logado
@@ -123,7 +123,7 @@ app.get('/usuario-atual', (req, res) => {
     });
 });
 
-// Rota genérica para atualizar dados (Nome, Email ou Plano)
+// Rota para atualizar dados (Nome, Email ou Plano)
 app.post('/atualizar-perfil', (req, res) => {
     const { campo, valor } = req.body; // 'campo' seria 'nome', 'email' ou 'plano'
     const usuarioId = req.session.usuarioId;
@@ -145,7 +145,7 @@ app.post('/atualizar-perfil', (req, res) => {
     });
 });
 
-// Rota específica para Senha (exige mais cuidado)
+// Rota específica para Senha 
 app.post('/alterar-senha', (req, res) => {
     const { senhaNova } = req.body;
     const sql = "UPDATE usuarios SET senha = ? WHERE id = ?";

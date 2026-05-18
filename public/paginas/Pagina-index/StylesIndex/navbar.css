@@ -1,7 +1,8 @@
 /* ==========================================================================
-   MENU DO TOPO E BOTÕES TORTOS (ESTILO REBELDE / Y2K)
+   MENU DO TOPO E BOTÕES TORTOS (ESTILO REBELDE / Y2K) - COMPLETO
    ========================================================================== */
 
+/* Container Principal da Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -13,18 +14,30 @@
     z-index: 100;
 }
 
+/* Alinhamento da Logo com Link */
+.nav-logo a {
+    display: block;
+}
+
 .nav-logo img {
     max-height: 40px;
     display: block;
 }
 
+/* Bloco que segura os botões (Desktop) */
 .nav-actions {
     display: flex;
     gap: 35px;
+    align-items: center;
 }
+
+/* ==========================================================================
+   ESTILO DOS BOTÕES (FUSÃO DO SEU CSS + HIGIENIZAÇÃO DO HTML)
+   ========================================================================== */
 
 /* Base para os botões estilizados e inclinados */
 .btn {
+    font-family: 'Segoe UI', sans-serif; /* Ou a fonte principal do teu site */
     font-size: 1rem;
     font-weight: bold;
     padding: 10px 24px;
@@ -33,10 +46,16 @@
     border-radius: 0px; /* Sem cantos arredondados para parecer mais bruto */
     color: #ffffff;
     position: relative;
-    background-color: #e91e63;
+    background-color: #e91e63; /* Cor padrão (Cadastrar) */
     transform-style: preserve-3d;
     transform: rotate(-7deg) scale(1); /* Deixa o botão tortinho para a esquerda */
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico ao passar o mouse */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico */
+    
+    /* SOLUÇÃO: Estilos removidos do HTML jogados para cá de forma global */
+    text-decoration: none; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
 }
 
 /* A sombra preta deslocada atrás do botão */
@@ -47,7 +66,7 @@
     background-color: #000000;
     border: 2px solid #000000;
     z-index: -1;
-    transform: translateZ(-1px) rotate(8deg) translate(4px, 4px); /* Joga a sombra pro lado e inverte a inclinação */
+    transform: translateZ(-1px) rotate(8deg) translate(4px, 4px); /* Sombra invertida */
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -55,28 +74,82 @@
 .btn-login {
     background-color: #ffffff;
     color: #000000;
-    transform: rotate(5deg) scale(1); /* Esse inclina para o outro lado para contrastar */
+    transform: rotate(5deg) scale(1); /* Inclina para o outro lado para contrastar */
 }
 
 .btn-login::before {
     transform: translateZ(-1px) rotate(-6deg) translate(-2px, 3px);
 }
 
-/* Quando passa o mouse, o botão desentorta e cresce um pouco */
-.btn:hover { transform: rotate(0deg) scale(1.08); }
-.btn:hover::before { transform: translateZ(-1px) rotate(0deg) translate(0px, 0px); }
+/* Força o botão de registo a manter o padrão do tema se necessário */
+.btn-register {
+    background-color: #e91e63;
+    color: #ffffff;
+}
 
-/* Ajuste do Menu para o Celular */
+/* Efeito de Hover: O botão desentorta e cresce um pouco */
+.btn:hover { 
+    transform: rotate(0deg) scale(1.08); 
+}
+.btn:hover::before { 
+    transform: translateZ(-1px) rotate(0deg) translate(0px, 0px); 
+}
+
+
+/* ==========================================================================
+   BOTÃO MENU HAMBÚRGUER (OCULTO NO DESKTOP)
+   ========================================================================== */
+.menu-toggle {
+    display: none; /* Escondido por padrão em telas grandes */
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* As 3 barrinhas do menu mobile */
+.menu-toggle .bar {
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+
+/* ==========================================================================
+   RESPONSIVIDADE (MOBILE / CELULAR)
+   ========================================================================== */
 @media (max-width: 768px) {
-    .menu-toggle { display: flex; }
+    /* Mostra o botão hambúrguer */
+    .menu-toggle { 
+        display: flex; 
+    }
+    
+    /* Transforma a barra de ações num menu vertical drop-down */
     .nav-actions {
-        display: none; /* Esconde os botões normais */
+        display: none; /* Esconde os botões normais até ativar */
         flex-direction: column;
         position: absolute;
-        top: 100%; left: 0; width: 100%;
+        top: 100%; 
+        left: 0; 
+        width: 100%;
         background-color: #C71555;
-        padding: 3rem 2rem; gap: 40px; align-items: center;
+        padding: 3rem 2rem; 
+        gap: 40px; 
+        align-items: center;
         box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     }
-    .nav-actions.active { display: flex; } /* Se tiver a classe 'active', mostra o menu aberto */
+    
+    /* Quando o JS adiciona a classe 'active', o menu mobile aparece */
+    .nav-actions.active { 
+        display: flex; 
+    } 
+    
+    /* Ajuste sutil nos botões para não ocuparem a largura toda no telemóvel */
+    .nav-actions .btn {
+        width: 200px;
+    }
 }

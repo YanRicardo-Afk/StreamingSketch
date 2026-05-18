@@ -1,13 +1,21 @@
 .hero {
     position: relative;
-    width: 100%; height: 70vh;
-    display: flex; align-items: center; justify-content: center;
+    width: 100%; 
+    height: 70vh;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
     overflow: hidden;
 }
 
 .hero-video {
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%; object-fit: cover; z-index: 1;
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    z-index: 1;
 }
 /* Opacidade para ficar na frente do video para escurecer o video */
 .hero-overlay {
@@ -19,12 +27,23 @@
 }
 
 .hero-content {
-    position: relative; z-index: 3;
-    width: 100%; max-width: 1200px; height: 100%; padding: 3rem 2rem;
-    display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: 40px;
+    position: relative; 
+    z-index: 3;
+    width: 100%; 
+    max-width: 1200px; 
+    height: 100%; 
+    padding: 3rem 2rem;
+    display: grid; 
+    grid-template-columns: 1.2fr 0.8fr; 
+    align-items: center; 
+    gap: 40px;
 }
 
-.hero-text-side { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+.hero-text-side { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    text-align: left; }
 
 .hero-main-title {
     font-family: 'Impact', sans-serif;
@@ -44,25 +63,52 @@
     margin-bottom: 2.5rem;
 }
 
-.hero-logo-side { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; }
-.hero-logo { text-align: center; transform-origin: center center; will-change: transform, filter; width: 100%; max-width: 450px; }
-.hero-logo img { width: 100%; height: auto; display: block; filter: drop-shadow(5px 5px 0px #000000); }
+.hero-logo-side { display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+    height: 100%; }
+.hero-logo { text-align: center;
+     transform-origin: center center;
+      will-change: transform, filter; 
+      width: 100%; max-width: 450px; 
+    }
+.hero-logo img { 
+    width: 100%;
+     height: auto; 
+     display: block; 
+     filter: drop-shadow(5px 5px 0px #000000); }
 
 .btn-subscribe {
-    align-self: flex-start; font-size: 1.3rem; font-weight: bold; color: #ffffff;
-    background-color: #C71555; border: none; padding: 16px 45px; border-radius: 50px;
-    cursor: pointer; box-shadow: 0 4px 15px rgba(199, 21, 85, 0.4);
-    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    align-self: flex-start; 
+    font-size: 1.3rem; 
+    font-weight: bold; 
+    color: #ffffff;
+    background-color: #C71555;
+    border: none; 
+    padding: 16px 45px; 
+    border-radius: 50px;
+    cursor: pointer; 
+    box-shadow: 0 4px 15px rgba(199, 21, 85, 0.4);
+    transition: transform 0.2s ease, 
+    background-color 0.2s ease, box-shadow 0.2s ease;
 }
 .btn-subscribe:hover { transform: scale(1.05); background-color: #af0f48; box-shadow: 0 6px 20px rgba(199, 21, 85, 0.6); }
 .btn-subscribe:active { transform: scale(0.98); }
 
 /* BARRA DE AVISO (TICKER) */
 .warning-ticker {
-    background-color: #000000; width: 100%; padding: 12px 0; overflow: hidden;
-    border-top: 3px solid #C71555; border-bottom: 3px solid #C71555; display: flex;
+    background-color: #000000; 
+    width: 100%; 
+    padding: 12px 0; 
+    overflow: hidden;
+    border-top: 3px solid #C71555; 
+    border-bottom: 3px solid #C71555; display: flex;
 }
-.ticker-track { display: flex; white-space: nowrap; gap: 40px; animation: roletaInfinita 10s linear infinite; }
+.ticker-track { display: flex; 
+    white-space: nowrap; 
+    gap: 40px; 
+    animation: roletaInfinita 10s linear infinite; }
 .ticker-track span {
     font-family: 'Impact', sans-serif; font-size: 1.8rem; letter-spacing: 3px; color: #ff79c6;
     text-shadow: 0 0 8px rgba(255, 121, 198, 0.6); animation: piscarAlerta 0.8s steps(2, start) infinite;
