@@ -1,31 +1,34 @@
 /* ==========================================================================
-   SEÇÃO SKETCH LIMBO: TEXTOS ENXUTOS + CARDS VERTICAIS + SETAS SOLTAS
+   SEÇÃO SKETCH LIMBO: FIXAÇÃO DOS BOTÕES E DVD SEM CORTES
    ========================================================================== */
 
 .limbo-about {
     background-color: #121214;
-    padding: 4rem 2rem;
+    padding: 4rem 0;
     width: 100%;
-    border-bottom: 5px solid #000;
+    position: relative; 
+    overflow: hidden; /* Garante que nada vaze para fora das bordas do site */
 }
 
 .about-container {
-    max-width: 1200px;
+    width: 95%;
+    max-width: 1800px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 2.5rem; /* Reduzido o espaçamento global */
+    gap: 2.5rem;
 }
 
-/* --- BLOCO DE TEXTO REDUZIDO --- */
+/* --- BLOCO DE TEXTO --- */
 .about-text-box {
     color: #ffffff;
     max-width: 650px;
+    padding: 0 2rem;
 }
 
 .about-title {
     font-family: 'Impact', sans-serif;
-    font-size: 2.2rem; /* Diminuído o tamanho do título */
+    font-size: 2.2rem;
     letter-spacing: 1px;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 0px #000;
@@ -40,7 +43,7 @@
 }
 
 .about-description {
-    font-size: 1.05rem; /* Texto menor e mais discreto */
+    font-size: 1.05rem;
     line-height: 1.5;
     color: #c0c0c8;
     margin-bottom: 1rem;
@@ -48,16 +51,17 @@
 
 .bold-alert-white {
     font-family: 'Impact', sans-serif;
-    font-size: 1.4rem; /* Frase de impacto menor */
+    font-size: 1.4rem;
     color: #ffffff; 
     text-transform: uppercase;
     letter-spacing: 1px;
     text-shadow: 2px 2px 0px #000;
 }
 
-/* --- BLOCO DO CARROSSEL --- */
+/* --- ÁREA DO CARROSSEL --- */
 .about-carousel-wrapper {
     width: 100%;
+    position: relative;
 }
 
 .carousel-title {
@@ -66,59 +70,115 @@
     color: #fff;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0 2rem;
 }
 
+/* Container de Navegação: Agora serve como base absoluta para os botões */
 .carousel-navigation-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    position: relative;
+    width: 100%;
+    height: 380px; /* Alinha com a altura dos cards */
 }
 
-/* ALTERADO: Botões totalmente invisíveis, aparecendo apenas o < e > soltos */
+/* CORRIGIDO: Setas de Controle Fixas Absolutas nas Pontas */
 .side-control-btn {
-    background: none;      /* Remove fundo preto */
-    border: none;          /* Remove borda rosa */
-    color: #C71555;        /* Cor das setas */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(18, 18, 20, 0.7); /* Fundo sutil para não sumir sobre as capas */
+    border: none;
+    color: #C71555;
     font-family: 'Impact', sans-serif;
-    font-size: 2.5rem;     /* Tamanho grande para a seta ficar fácil de clicar */
+    font-size: 3.5rem;
     cursor: pointer;
-    padding: 0 10px;
+    padding: 10px 15px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s ease, color 0.2s ease;
     user-select: none;
+    z-index: 10; /* Sempre acima dos cards e do DVD */
+}
+
+/* Posiciona cada botão na sua respectiva extremidade */
+#prev-btn {
+    left: 10px;
+}
+
+#next-btn {
+    right: 10px; /* CORRIGIDO: Força o botão a aparecer travado na borda direita */
 }
 
 .side-control-btn:hover {
-    color: #ffffff;        /* Seta acende em branco no hover */
-    transform: scale(1.2); /* Dá um leve crescimento */
+    color: #ffffff;
+    transform: translateY(-50%) scale(1.2); /* Mantém o alinhamento vertical no hover */
 }
 
-/* Trilha do Carrossel */
+/* Área Interativa que envolve os Cards */
+.carousel-interactive-area {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Container do DVD flutuando na ponta esquerda */
+.dvd-container {
+    position: absolute;
+    left: -160px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5; /* Atrás dos botões, mas na frente dos cards */
+    pointer-events: none;
+}
+
+/* O Disco do DVD */
+.dvd-disk {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Trilha dos Cards */
 .catalog-carousel {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     overflow-x: hidden;
-    padding: 10px 5px;
-    scroll-behavior: smooth;
-    flex-grow: 1;
+    padding: 15px 5px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    z-index: 1; /* Passa por trás do DVD */
+    
+    /* Espaço nas laterais para não cobrir os botões fixos */
+    padding-left: 240px; /* Começa depois do DVD */
+    padding-right: 80px; /* Margem de segurança para o botão direito */
+    scroll-behavior: smooth; 
 }
 
-/* --- VOLTOU: CARDS EM PÉ (ESTILO POSTER) --- */
+/* Cards */
 .carousel-card {
-    flex: 0 0 160px;       /* Ajustada largura para o formato vertical */
+    flex: 0 0 180px;
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
 }
 
-/* Quadro da Imagem Vertical */
 .card-img-wrapper {
     width: 100%;
-    height: 230px;         /* Altura em pé para formato de pôster */
+    height: 260px;
     overflow: hidden;
     border-radius: 6px;
     border: 3px solid #000;
@@ -133,9 +193,8 @@
     transition: transform 0.3s ease;
 }
 
-/* Efeitos de Hover nos Cards */
 .carousel-card:hover .card-img-wrapper {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     box-shadow: 5px 5px 0px #ffffff;
 }
 
@@ -143,23 +202,105 @@
     transform: scale(1.06);
 }
 
-/* Nome da série abaixo da foto */
 .carousel-card h4 {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #fff;
     margin-top: 8px;
     font-family: 'Segoe UI', sans-serif;
-    text-align: center;    /* Centralizado combina melhor com cards em pé */
+    text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Responsividade Básica */
-@media (max-width: 768px) {
-    .about-title { font-size: 1.8rem; }
-    .carousel-card { flex: 0 0 130px; }
-    .card-img-wrapper { height: 190px; }
-    .side-control-btn { font-size: 2rem; padding: 0 5px; }
+/* Responsividade */
+@media (max-width: 900px) {
+    .dvd-container { display: none; }
+    .catalog-carousel { padding-left: 60px; padding-right: 60px; }
+}
+
+/* ==========================================================================
+   DIVISÓRIA DE RAIO EM ZIGUE-ZAGUE NEON ROSA (CORREÇÃO DE CAMADAS)
+   ========================================================================== */
+
+/* 1. Ajuste necessário na seção para NÃO cortar o brilho do raio que vai para baixo */
+.limbo-about {
+    background-color: #121214;
+    padding: 4rem 0;
+    width: 100%;
+    position: relative; 
+    /* Mudamos para permitir que o brilho do neon vaze para a próxima seção */
+    overflow: visible; 
+}
+
+/* 2. O Raio com super z-index para ficar na frente de qualquer outra div */
+.lightning-z-divider {
+    position: absolute;
+    bottom: -20px; /* Centraliza exatamente na linha divisória */
+    left: 0;
+    width: 100%;
+    height: 40px;  
+    z-index: 99;   /* CORRIGIDO: Valor altíssimo para saltar para a frente dos planos */
+    pointer-events: none;
+
+    filter: drop-shadow(0 0 5px #ffffff)
+            drop-shadow(0 0 15px #ff79c6)
+            drop-shadow(0 0 30px #C71555)
+            drop-shadow(0 0 60px #C71555);
+            
+    animation: electricalFlicker 2s infinite ease-in-out;
+}
+
+/* O corpo do raio cortado em Z */
+.lightning-z-divider::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; 
+    
+    clip-path: polygon(
+        0% 43%, 
+        45% 45%, 
+        43% 62%, 
+        55% 37%, 
+        53% 54%, 
+        100% 47%, 
+        100% 53%, 
+        53% 60%, 
+        55% 43%, 
+        43% 68%, 
+        45% 51%, 
+        0% 49%
+    );
+}
+
+/* Animação com brilho intenso */
+@keyframes electricalFlicker {
+    0%, 100% {
+        filter: drop-shadow(0 0 4px #ffffff)
+                drop-shadow(0 0 12px #ff79c6)
+                drop-shadow(0 0 25px #C71555)
+                drop-shadow(0 0 45px #C71555);
+        opacity: 0.92;
+    }
+    45% {
+        filter: drop-shadow(0 0 6px #ffffff)
+                drop-shadow(0 0 18px #ff79c6)
+                drop-shadow(0 0 35px #C71555)
+                drop-shadow(0 0 75px #C71555);
+        opacity: 1;
+    }
+    48% {
+        filter: drop-shadow(0 0 2px #ffffff)
+                drop-shadow(0 0 8px #ff79c6)
+                drop-shadow(0 0 15px #C71555);
+        opacity: 0.75;
+    }
+    52% {
+        opacity: 1;
+    }
 }
